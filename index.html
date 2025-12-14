@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Medhe Family Tree</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --bg:#eef1f6;
+  --app:#ffffff;
+
+  --gen1:#ffe8d6;          /* 1st gen - orange */
+  --family-green:#f1fff4; /* BIG family box */
+  --gen2-pink:#fde6ef;    /* SMALL pink person box */
+  --gen3-blue:#e6eeff;    /* sub-family */
+
+  --border:#cfd6e6;
+  --accent:#4f5cff;
+  --muted:#666;
+}
+
+/* ===== BASE ===== */
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI;
+  background:linear-gradient(135deg,#eef1f6,#e3e7ff);
+  display:flex;
+  justify-content:center;
+}
+
+/* ===== APP ===== */
+.app{
+  width:440px;
+  background:var(--app);
+  border-radius:30px;
+  box-shadow:0 35px 90px rgba(0,0,0,.25);
+  overflow:hidden;
+  margin:20px 0;
+}
+
+/* ===== HEADER ===== */
+.header{
+  padding:16px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.header .title{font-weight:600}
+.header .pm{font-weight:700;color:var(--accent)}
+
+/* ===== LOGIN ===== */
+.login{
+  padding:50px 26px;
+}
+.login-card{
+  background:white;
+  padding:36px 30px;
+  border-radius:28px;
+  box-shadow:0 20px 50px rgba(0,0,0,.15);
+}
+.login-card h2{margin:0 0 6px}
+.login-card p{font-size:14px;color:var(--muted);margin-bottom:26px}
+.login-card input{
+  width:100%;
+  padding:15px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  margin-bottom:16px;
+}
+.login-card button{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:18px;
+  background:linear-gradient(135deg,var(--accent),#6f7cff);
+  color:white;
+  font-size:16px;
+}
+
+/* ===== TREE ===== */
+.tree{display:none;padding:20px}
+.greet{font-size:18px;font-weight:600}
+.subtitle{font-size:13px;color:var(--muted);margin-bottom:18px}
+
+/* ===== CARDS ===== */
+.card{
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:white; /* 4th gen */
+  font-size:14px;
+  text-align:center;
+}
+.gen1{
+  background:var(--gen1);
+  border:2px solid #f0b37e;
+}
+.gen2-person{
+  background:var(--gen2-pink);
+  border:1.5px solid #f3a6c8;
+}
+.name{font-weight:600}
+
+/* ===== LAYOUT ===== */
+.center{display:flex;justify-content:center}
+.row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* ===== FAMILY BOXES ===== */
+.family-box{
+  background:var(--family-green);   /* BIG GREEN BOX */
+  border:2px solid #b8e0c8;
+  border-radius:20px;
+  padding:16px;
+  margin-top:20px;
+}
+.family-title{
+  font-size:13px;
+  font-weight:600;
+  color:#2f6f4f;
+  margin-bottom:10px;
+}
+.sub-family{
+  background:var(--gen3-blue);
+  border:1.5px solid #9fb2ff;
+  border-radius:16px;
+  padding:12px;
+  margin-top:12px;
+}
+
+/* ===== FOOTER ===== */
+.footer{
+  padding:16px;
+  display:flex;
+  justify-content:center;
+  font-size:13px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- HEADER -->
+<div class="header">
+  <div class="title">Medhe Family Tree</div>
+  <div class="pm">PM</div>
+</div>
+
+<!-- LOGIN -->
+<div class="login" id="login">
+  <div class="login-card">
+    <h2>Welcome</h2>
+    <p>Please enter your details</p>
+    <input id="uname" placeholder="Your name">
+    <input placeholder="Mobile number">
+    <button onclick="enter()">Continue</button>
+  </div>
+</div>
+
+<!-- TREE -->
+<div class="tree" id="tree">
+  <div class="greet" id="hello"></div>
+  <div class="subtitle">Medhe family lineage</div>
+
+  <!-- ROOT -->
+  <div class="center row">
+    <div class="card gen1 name">Dattatrya Sakharam Medhe</div>
+    <div class="card gen1 name">Venu Dattatrya Medhe</div>
+  </div>
+
+  <!-- ================= SONS ================= -->
+
+  <!-- NIVRUTTI -->
+  <div class="family-box">
+    <div class="family-title">Nivrutti Medhe Family</div>
+    <div class="row">
+      <div class="card gen2-person">Nivrutti</div>
+      <div class="card gen2-person">Rama</div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Dilip & Kavita</div>
+      <div class="row">
+        <div class="card">Parikshit</div>
+        <div class="card">Purushottam</div>
+      </div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Ravi & Manjush</div>
+      <div class="row">
+        <div class="card">Prajakta</div>
+        <div class="card">Radhika</div>
+      </div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Dipali & Sharad</div>
+      <div class="row">
+        <div class="card">Pranita</div>
+        <div class="card">Prayag</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KISAN -->
+  <div class="family-box">
+    <div class="family-title">Kisan Medhe Family</div>
+    <div class="row">
+      <div class="card gen2-person">Kisan</div>
+      <div class="card gen2-person">Suman</div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Sunil & Sangita</div>
+      <div class="row">
+        <div class="card">Avinash</div>
+        <div class="card">Sravani</div>
+      </div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Anil & Anita</div>
+      <div class="row">
+        <div class="card">Kartiki</div>
+        <div class="card">Tejashri</div>
+      </div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Satish & Sonali</div>
+      <div class="row">
+        <div class="card">Sai</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRABHAKAR -->
+  <div class="family-box">
+    <div class="family-title">Prabhakar Medhe Family</div>
+    <div class="row">
+      <div class="card gen2-person">Prabhakar</div>
+      <div class="card gen2-person">Shindhu</div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Yogesh & Swati</div>
+      <div class="row">
+        <div class="card">Taniya</div>
+      </div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Ritesh & Shraddha</div>
+      <div class="row">
+        <div class="card">Avneesh</div>
+      </div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Nilesh</div>
+    </div>
+  </div>
+
+  <!-- RAMU -->
+  <div class="family-box">
+    <div class="family-title">Ramu Medhe Family</div>
+    <div class="row">
+      <div class="card gen2-person">Ramu</div>
+      <div class="card gen2-person">Shila</div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Saurabh & Ashwini</div>
+      <div class="row">
+        <div class="card">Samrudhi (Anandi)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHIVAJI -->
+  <div class="family-box">
+    <div class="family-title">Shivaji Medhe Family</div>
+    <div class="row">
+      <div class="card gen2-person">Shivaji</div>
+      <div class="card gen2-person">Asha</div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Alankar & Sakshi</div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Sakshi & Rahul Shelar</div>
+    </div>
+  </div>
+
+  <!-- ================= DAUGHTERS ================= -->
+
+  <!-- DURPADA -->
+  <div class="family-box">
+    <div class="family-title">Durpada Medhe Family</div>
+    <div class="row">
+      <div class="card gen2-person">Durpada</div>
+      <div class="card gen2-person">Nivrutti Baburao Chavan</div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Sanjay & Sangita</div>
+      <div class="row">
+        <div class="card">Sanket</div>
+        <div class="card">Kalyani</div>
+        <div class="card">Akshada</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MIRA -->
+  <div class="family-box">
+    <div class="family-title">Mira Medhe Family</div>
+    <div class="row">
+      <div class="card gen2-person">Mira</div>
+      <div class="card gen2-person">Bhivaji Ganpat Waje</div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Sandeep & Arti</div>
+      <div class="row">
+        <div class="card">Gaurav</div>
+        <div class="card">Rushi</div>
+      </div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Sachin & Pooja</div>
+      <div class="row">
+        <div class="card">Sai</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LATA -->
+  <div class="family-box">
+    <div class="family-title">Lata Medhe Family</div>
+    <div class="row">
+      <div class="card gen2-person">Lata</div>
+      <div class="card gen2-person">Ulhas Dagu Gade</div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Sachin & Swati</div>
+    </div>
+  </div>
+
+  <!-- SHINDHU -->
+  <div class="family-box">
+    <div class="family-title">Shindhu Medhe Family</div>
+    <div class="row">
+      <div class="card gen2-person">Shindhu</div>
+      <div class="card gen2-person">Shubhash Khanderao Thete</div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Sayali & Ashitosh Bezekar</div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Pradnya & Mahesh Thoke</div>
+    </div>
+
+    <div class="sub-family">
+      <div class="family-title">Akash & Asmita Gavhane</div>
+    </div>
+  </div>
+
+
+</div>
+
+<div class="footer">ⓒ Purushottam Medhe</div>
+
+</div>
+
+<script>
+function enter(){
+  const n=document.getElementById("uname").value || "Guest";
+  document.getElementById("login").style.display="none";
+  document.getElementById("tree").style.display="block";
+  document.getElementById("hello").innerText="Hello, "+n;
+}
+</script>
+
+</body>
+</html>
